@@ -14,5 +14,5 @@ If there are further enhancements, suggestions, or improvements. Please fork the
 and the procedures upon improvising updates for this project. Your comments are deeply appreciated! 
 1. Fork this repository
 2. Create a Feature Branch: ```git checkout -b feature/featTrackHub```
-3. Push to the Branch : ```git push origin feature/featTrackhub```
+3. Push to the Branch: ```git push origin feature/featTrackhub```
 4. Open a Pull Request
