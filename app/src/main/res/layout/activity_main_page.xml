@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main_page"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/primaryGreen"
+        android:paddingRight="10sp"
+        >
+
+        <Button
+            android:id="@+id/trackBotButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#76f0ff"
+            android:drawableLeft="@drawable/bot"
+            android:text="Chat with TrackBot"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/notificationButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notificationButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="100dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/profileButton"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/tertiaryGreen"
+                android:padding="7dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bell" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/tertiaryGreen"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile" />
+        </androidx.cardview.widget.CardView>
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/secondaryGreen"
+        >
+        <Button
+            android:id="@+id/foundItemsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/secondary_square_button"
+            app:backgroundTint="@null"
+            android:text="See Found Item Posts"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/lostItemsBtn"
+            android:background="@drawable/secondary_square_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:backgroundTint="@null"
+            android:text="See Lost Item Posts"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/displayMemory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/white"
+        >
+
+        <!-- Enter memory here       -->
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="100dp"
+                        android:layout_marginEnd="5dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/noimage" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:id="@+id/fullNameView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Full Name"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="2dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/dateView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Date"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="2dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/descriptionView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/imageCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/noimage" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/secondaryGreen"
+        >
+        <Button
+            android:id="@+id/yourPostsButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tertiary_square_button"
+            app:backgroundTint="@null"
+            android:text="See your Posts"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/primaryGreen"
+        >
+        <Button
+            android:id="@+id/addFoundPostButton"
+            android:background="@drawable/primary_square_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:backgroundTint="@null"
+            android:text="Add Found Item Post"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/addLostPostButton"
+            android:background="@drawable/primary_square_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:backgroundTint="@null"
+            android:text="Add Lost Item Post"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

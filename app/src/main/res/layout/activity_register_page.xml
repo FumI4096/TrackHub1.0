@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/applogo"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="30dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student ID:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Student ID"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter First Name"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Last Name"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:inputType="textPassword"
+            />
+        <CheckBox
+            android:id="@+id/showPassword"
+            android:theme="@style/checkBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Password"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Number:"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/regContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Contact Number (all digits)"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/primaryGreen"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/toLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/have_account"
+        android:textColor="@color/linkColor"
+        android:clickable="true"
+        />
+</LinearLayout>

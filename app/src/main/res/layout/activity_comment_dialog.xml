@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".CommentDialogFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comment"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:paddingVertical="20dp"
+        android:textStyle="bold"
+        android:background="@color/primaryGreen"
+        />
+
+    <ScrollView
+        android:id="@+id/displayMemory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/white"
+        >
+        <!-- Enter comment here -->
+        <LinearLayout
+            android:id="@+id/commentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
+            >
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        android:paddingTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <EditText
+            android:id="@+id/inputComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:hint="Enter Message"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/circle_border"
+            android:textColor="@color/black"
+            android:maxLength ="1000"
+            android:scrollHorizontally="false"
+            />
+
+        <ImageView
+            android:id="@+id/sendComment"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:src="@drawable/sendbtn"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:backgroundTint="@color/primaryGreen"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="5dp"
+        />
+
+</LinearLayout>

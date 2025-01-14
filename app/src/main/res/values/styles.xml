@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FullScreenDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+<!--        <item name="android:windowFullscreen">true</item>-->
+    </style>
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/secondaryGreen</item>
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
+</resources>

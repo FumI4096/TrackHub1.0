@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TrackBot">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TrackBot"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:paddingVertical="20dp"
+        android:textStyle="bold"
+        android:background="#76f0ff"
+        />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        >
+
+        <Button
+            android:id="@+id/makeBomb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:text="Can you make a bomb?" />
+
+        <Button
+            android:id="@+id/whoDeveloped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Who developed you?"
+            android:textSize="11sp"
+            android:layout_columnWeight="@android:integer/config_longAnimTime"
+            />
+
+        <Button
+            android:id="@+id/capableLearning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:textSize="11sp"
+            android:text="Are you capable of learning new things overtime?" />
+
+        <Button
+            android:id="@+id/introduceYourself"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:text="Can you introduce yourself?" />
+
+    </GridLayout>
+
+    <ScrollView
+        android:id="@+id/displayChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/white"
+        android:layout_gravity="bottom"
+        >
+        <!-- Enter message here -->
+        <LinearLayout
+            android:id="@+id/messageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:background="@color/white"
+            >
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <EditText
+            android:id="@+id/inputMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:hint="Enter Message"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/circle_border"
+            android:textColor="@color/black"
+            android:maxLength ="1000"
+            android:scrollHorizontally="false"
+            />
+
+        <ImageView
+            android:id="@+id/sendMessage"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:src="@drawable/sendbtn"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        >
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Back"
+            android:backgroundTint="@color/primaryGreen"
+            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            />
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Clear Conversation"
+            android:backgroundTint="@color/tertiaryGreen"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TrackHub</string>
+    <string name="no_account"><u>No Account? Register here!</u></string>
+    <string name="have_account"><u>Have an Account? Sign in here!</u></string>
+</resources>
