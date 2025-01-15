@@ -29,10 +29,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+
 }
 
 dependencies {
-
+    implementation("org.conscrypt:conscrypt-android:2.5.0")
+    implementation("io.grpc:grpc-okhttp:1.47.0")
+    implementation("com.clarifai:clarifai-grpc:10.5.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
