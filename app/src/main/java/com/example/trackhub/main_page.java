@@ -27,12 +27,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
 public class main_page extends AppCompatActivity {
     CardView profileBtn, notificationBtn;
     LinearLayout postLayout, botLayout;
-    Button addLostPostBtn, addFoundPostBtn, getFoundItemsBtn, getLostItemsBtn, yourPostsBtn, trackBotBtn;
+    Button addLostPostBtn, addFoundPostBtn, getFoundItemsBtn, getLostItemsBtn, yourPostsBtn, trackBotBtn, testImageBtn;
     private String studentId;
     public boolean navFound, navLost, navYourPost;
+
+    private ImageProcess ip = new ImageProcess();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class main_page extends AppCompatActivity {
         yourPostsBtn = findViewById(R.id.yourPostsButton);
         trackBotBtn = findViewById(R.id.trackBotButton);
         notificationBtn = findViewById(R.id.notificationButton);
+        testImageBtn = findViewById(R.id.testImageProces);
 
         postLayout = findViewById(R.id.container);
         studentId = getIntent().getStringExtra("StudentID");
@@ -151,6 +155,17 @@ public class main_page extends AppCompatActivity {
         notificationBtn.setOnClickListener(v -> {
             NotificationDialogFragment ndf = new NotificationDialogFragment(studentId);
             ndf.show(getSupportFragmentManager(), "NotificationDialog");
+        });
+
+        testImageBtn.setOnClickListener(v -> {
+            boolean result = ip.processImage(this, R.drawable.testimage);
+
+            if(result){
+                Toast.makeText(this, "Image has been tested", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, "Nope", Toast.LENGTH_SHORT).show();
+            }
         });
 
     };
