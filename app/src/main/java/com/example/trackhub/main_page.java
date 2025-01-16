@@ -158,7 +158,7 @@ public class main_page extends AppCompatActivity {
         });
 
         testImageBtn.setOnClickListener(v -> {
-            boolean result = ip.processImage(this, R.drawable.testimage);
+            boolean result = ip.processImage(this, R.drawable.testimagetwo);
 
             if(result){
                 Toast.makeText(this, "Image has been tested", Toast.LENGTH_SHORT).show();
