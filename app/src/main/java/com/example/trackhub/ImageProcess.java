@@ -21,12 +21,18 @@ public class ImageProcess {
 
     private V2Grpc.V2BlockingStub stub;
 
+    static final String USER_ID = "tkxmwlv2zo9d";
+    static final String PAT = "1d3e4a12bf924a9da3441a80504aadd9";
+    static final String APP_ID = "image-moderation-aeb01bddedde";
+    static final String WORKFLOW_ID = "moderation";
+
     public ImageProcess(){
         stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
-                .withCallCredentials(new ClarifaiCallCredentials("0d877058bd4f4fc0b7152f4011f020df"));
+                .withCallCredentials(new ClarifaiCallCredentials(PAT));
     }
 
-    public boolean processImage(Context context, int drawableId){
+
+    public boolean processImage(Context context, int drawableId) {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), drawableId);
 
         // Step 2: Convert the Bitmap to a Base64 String
@@ -36,9 +42,10 @@ public class ImageProcess {
 
         ByteString byteStringImage = ByteString.copyFrom(imageBytes);
 
-        MultiOutputResponse response = stub.postModelOutputs(
-                PostModelOutputsRequest.newBuilder()
-                        .setModelId("aaa03c23b3724a16a56b629203edc62c")
+        PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
+                PostWorkflowResultsRequest.newBuilder()
+                        .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
+                        .setWorkflowId(WORKFLOW_ID)
                         .addInputs(
                                 Input.newBuilder().setData(
                                         Data.newBuilder().setImage(
@@ -49,18 +56,31 @@ public class ImageProcess {
                         .build()
         );
 
-        if (response.getStatus().getCode() != StatusCode.SUCCESS) {
-            throw new RuntimeException("Request failed, status: " + response.getStatus());
-        }
+        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+        // one WorkflowResult.
+        WorkflowResult results = postWorkflowResultsResponse.getResults(0);
 
-        for (Concept c : response.getOutputs(0).getData().getConceptsList()) {
-            Log.d("ClarifaiResponse", String.format("%12s: %,.2f", c.getName(), c.getValue()));
+        // Each model we have in the workflow will produce one output.
+        for (Output output : results.getOutputsList()) {
+            Model model = output.getModel();
 
-            if (c.getName().equals("violence") && c.getValue() > 0.9) {
-                return false;
-            }
-            if (c.getName().equals("sexual") && c.getValue() > 0.9) {
-                return false;
+            Log.d("ImageProcess", "Predicted concepts for the model `" + model.getId() + "`:");
+            for (Concept concept : output.getData().getConceptsList()) {
+                Log.d("ImageProcess", String.format("\t%s %.2f", concept.getName(), concept.getValue()));
+
+                // Add logic to return false for unsafe categories
+                if (concept.getName().equalsIgnoreCase("Drug") && concept.getValue() > 0.9) {
+                    return false;
+                }
+                if (concept.getName().equalsIgnoreCase("Explicit") && concept.getValue() > 0.9) {
+                    return false;
+                }
+                if (concept.getName().equalsIgnoreCase("Gore") && concept.getValue() > 0.9) {
+                    return false;
+                }
+                if (concept.getName().equalsIgnoreCase("Suggestive") && concept.getValue() > 0.9) {
+                    return false;
+                }
             }
         }
 
