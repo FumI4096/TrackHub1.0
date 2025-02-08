@@ -62,7 +62,6 @@ public class main_page extends AppCompatActivity {
         yourPostsBtn = findViewById(R.id.yourPostsButton);
         trackBotBtn = findViewById(R.id.trackBotButton);
         notificationBtn = findViewById(R.id.notificationButton);
-        testImageBtn = findViewById(R.id.testImageProces);
 
         postLayout = findViewById(R.id.container);
         studentId = getIntent().getStringExtra("StudentID");
@@ -157,16 +156,16 @@ public class main_page extends AppCompatActivity {
             ndf.show(getSupportFragmentManager(), "NotificationDialog");
         });
 
-        testImageBtn.setOnClickListener(v -> {
-            boolean result = ip.processImage(this, R.drawable.testimagetwo);
-
-            if(result){
-                Toast.makeText(this, "Image has been tested", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                Toast.makeText(this, "Nope", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        testImageBtn.setOnClickListener(v -> {
+//            boolean result = ip.processImage(this, R.drawable.testimagetwo);
+//
+//            if(result){
+//                Toast.makeText(this, "Image is no", Toast.LENGTH_SHORT).show();
+//            }
+//            else{
+//                Toast.makeText(this, "Image is Yes", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     };
 
