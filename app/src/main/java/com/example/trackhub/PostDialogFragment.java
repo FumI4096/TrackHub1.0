@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class PostDialogFragment extends DialogFragment {
     private String getFile;
     private String studentId;
     private static ImageView imagePreview;
+    private ImageProcess ip = new ImageProcess();
 
     public PostDialogFragment(String infoTitle, String id){
         this.getInfoTitle = infoTitle;
@@ -46,6 +49,7 @@ public class PostDialogFragment extends DialogFragment {
         // Inflate the custom layout for the dialog
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_post_dialog, null);
+
 
         getActivity().getWindow().setNavigationBarColor(getResources().getColor(android.R.color.black));
         getActivity().getWindow().setStatusBarColor(getResources().getColor(android.R.color.black));
@@ -80,6 +84,8 @@ public class PostDialogFragment extends DialogFragment {
         btnSubmitPost.setOnClickListener(v -> {
             String postText = editTextPost.getText().toString();
             Drawable postImage = imagePreview.getDrawable();
+            Bitmap imageBitmap = drawableToBitmap(postImage);
+            Log.d("TestBitmap", "Image Bitmap: " + imageBitmap);
             if(postText.isEmpty() && !(checkImageChange(postImage))){
                 Toast.makeText(getActivity(), "Please enter text and image for your post.", Toast.LENGTH_SHORT).show();
             }
@@ -88,6 +94,10 @@ public class PostDialogFragment extends DialogFragment {
             }
             else if(!(checkImageChange(postImage))){
                 Toast.makeText(getActivity(), "Please enter image for your post.", Toast.LENGTH_SHORT).show();
+            }
+            else if(ip.imageInappropriate(getContext(), imageBitmap)){
+                Toast.makeText(getActivity(), "Your image contains content that may be irrelevant.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Please upload a different image.", Toast.LENGTH_SHORT).show();
             }
             else{
                 if(infoTitleView.getText().toString().equals("Enter Found Item Details")){
@@ -165,6 +175,24 @@ public class PostDialogFragment extends DialogFragment {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(
+                drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(),
+                Bitmap.Config.ARGB_8888
+        );
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
     }
 
 
